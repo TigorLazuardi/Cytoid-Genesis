@@ -54,7 +54,16 @@
 </template>
 
 <script>
-export default {}
+export default {
+  data: function () {
+    return {
+      music: '',
+      musicPreview: '',
+      background: '',
+      storyboard: ''
+    }
+  }
+}
 </script>
 
 <style>
