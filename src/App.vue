@@ -9,6 +9,7 @@
 
         <!-- Input -->
         <InputForm @setInput="setInput" />
+
       </v-row>
     </v-container>
   </v-app>
@@ -28,11 +29,17 @@ export default {
     storyboard: ''
   }),
   methods: {
-    setInput ({ music, musicPreview, background, storyboard }) {
-      this.music = music
-      this.musicPreview = musicPreview
-      this.background = background
-      this.storyboard = storyboard
+    setMusic (val) {
+      this.music = val
+    },
+    setMusicPreview (val) {
+      this.music = val
+    },
+    setBackground (val) {
+      this.music = val
+    },
+    setStoryboard (val) {
+      this.music = val
     }
   }
 }

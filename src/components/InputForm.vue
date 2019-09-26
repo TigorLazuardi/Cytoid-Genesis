@@ -62,6 +62,9 @@ export default {
       background: '',
       storyboard: ''
     }
+  },
+  watch: {
+    music: function () {}
   }
 }
 </script>
