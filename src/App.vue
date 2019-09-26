@@ -4,12 +4,12 @@
       <v-row>
         <!-- Title -->
         <v-col cols="12">
-          <h1>Cytoid Genesis</h1>
+          <h1>Cytoid Level Generator</h1>
         </v-col>
 
         <!-- Input -->
-        <InputForm @setInput="setInput" />
-
+        <InputForm />
+        <Charts />
       </v-row>
     </v-container>
   </v-app>
@@ -17,30 +17,14 @@
 
 <script>
 import InputForm from './components/InputForm'
+import Charts from './components/Charts'
 export default {
   name: 'App',
   components: {
-    InputForm
+    InputForm,
+    Charts
   },
-  data: () => ({
-    music: '',
-    musicPreview: '',
-    background: '',
-    storyboard: ''
-  }),
-  methods: {
-    setMusic (val) {
-      this.music = val
-    },
-    setMusicPreview (val) {
-      this.music = val
-    },
-    setBackground (val) {
-      this.music = val
-    },
-    setStoryboard (val) {
-      this.music = val
-    }
-  }
+  data: () => ({}),
+  methods: {}
 }
 </script>
