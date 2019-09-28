@@ -27,17 +27,17 @@
 </template>
 
 <script>
-import InputForm from "./components/InputForm";
-import Charts from "./components/Charts";
-import Metadata from "./components/Metadata";
+import InputForm from './components/InputForm'
+import Charts from './components/Charts'
+import Metadata from './components/Metadata'
 export default {
-  name: "App",
+  name: 'App',
   components: {
     InputForm,
     Charts,
     Metadata
   }
-};
+}
 </script>
 
 <style>

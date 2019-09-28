@@ -54,22 +54,22 @@
 
 <script>
 export default {
-  name: "Input-Form",
-  data: function() {
+  name: 'Input-Form',
+  data: function () {
     return {
-      music: "",
-      musicPreview: "",
-      background: "",
-      storyboard: ""
-    };
+      music: '',
+      musicPreview: '',
+      background: '',
+      storyboard: ''
+    }
   },
   methods: {
-    previewFiles(e) {
-      this.music = e.path;
-      console.log(this.music);
+    previewFiles (e) {
+      this.music = e.path
+      console.log(this.music)
     }
   }
-};
+}
 </script>
 
 <style>

@@ -109,35 +109,35 @@
 
 <script>
 export default {
-  name: "Metadata",
-  data() {
+  name: 'Metadata',
+  data () {
     return {
-      chartAuthor: "",
-      musicTitle: "",
-      chartId: "",
-      musicTitleLocalized: "",
-      required: [v => v !== "" || "Please fill the chart author"]
-    };
+      chartAuthor: '',
+      musicTitle: '',
+      chartId: '',
+      musicTitleLocalized: '',
+      required: [v => v !== '' || 'Please fill the chart author']
+    }
   },
   computed: {
     _chartId: {
-      get() {
+      get () {
         let author = this.chartAuthor
-          .replace(/\s/g, "_")
-          .replace(/[^\dA-Za-z_\-\.]/g, "_")
-          .toLowerCase();
+          .replace(/\s/g, '_')
+          .replace(/[^\dA-Za-z_\-\.]/g, '_')
+          .toLowerCase()
         let music = this.musicTitle
-          .replace(/\s/g, "_")
-          .replace(/[^\dA-Za-z_\-\.]/g, "_")
-          .toLowerCase();
-        return author + "." + music;
+          .replace(/\s/g, '_')
+          .replace(/[^\dA-Za-z_\-\.]/g, '_')
+          .toLowerCase()
+        return author + '.' + music
       },
-      set() {
-        this.chartId = this._chartId;
+      set () {
+        this.chartId = this._chartId
       }
     }
   }
-};
+}
 </script>
 
 <style scoped>

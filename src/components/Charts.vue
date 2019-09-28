@@ -111,38 +111,38 @@
 
 <script>
 export default {
-  name: "Charts",
-  data() {
+  name: 'Charts',
+  data () {
     return {
       easy: {
         use: false,
-        name: "",
+        name: '',
         difficulty: null,
-        path: "",
-        storyboard: "",
-        musicOverride: ""
+        path: '',
+        storyboard: '',
+        musicOverride: ''
       },
       hard: {
         use: false,
-        name: "",
+        name: '',
         difficulty: 1,
-        path: "",
-        storyboard: "",
-        musicOverride: ""
+        path: '',
+        storyboard: '',
+        musicOverride: ''
       },
       EX: {
         use: false,
-        name: "",
+        name: '',
         difficulty: 1,
-        path: "",
-        storyboard: "",
-        musicOverride: ""
+        path: '',
+        storyboard: '',
+        musicOverride: ''
       }
-    };
+    }
   },
   methods: {},
   computed: {}
-};
+}
 </script>
 
 <style>
