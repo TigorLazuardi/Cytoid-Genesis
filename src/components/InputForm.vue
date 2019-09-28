@@ -1,7 +1,7 @@
 <template>
   <v-col cols="12">
     <h3 class="headline">Input</h3>
-    <p class="caption font-italic">*Outlined inputs are mandatory to be filled.</p>
+    <p class="caption font-italic">*Outlined inputs are mandatory.</p>
     <v-divider></v-divider>
     <v-container fluid>
       <v-row>
@@ -14,6 +14,7 @@
             show-size
             outlined
             accept="audio/mpeg"
+            @change="previewFiles"
           ></v-file-input>
         </v-col>
         <v-col lg="3" md="6" sm="12">
@@ -53,15 +54,22 @@
 
 <script>
 export default {
-  data: function () {
+  name: "Input-Form",
+  data: function() {
     return {
-      music: '',
-      musicPreview: '',
-      background: '',
-      storyboard: ''
+      music: "",
+      musicPreview: "",
+      background: "",
+      storyboard: ""
+    };
+  },
+  methods: {
+    previewFiles(e) {
+      this.music = e.path;
+      console.log(this.music);
     }
   }
-}
+};
 </script>
 
 <style>

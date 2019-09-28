@@ -6,4 +6,9 @@ import Metadata from './modules/Metadata'
 
 Vue.use(Vuex)
 
-export default new Vuex.Store({ modules: { Charts, InputForm, Metadata } })
+export default new Vuex.Store({
+    state: {
+        errors: []
+    },
+    modules: { Charts, InputForm, Metadata }
+})
