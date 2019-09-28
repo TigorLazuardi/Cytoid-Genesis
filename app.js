@@ -17,7 +17,6 @@ app.on('ready', () => {
     minimizable: true,
     minWidth: 600,
     closable: true,
-    useContentSize: true,
     webPreferences: { webSecurity: false }
   })
 

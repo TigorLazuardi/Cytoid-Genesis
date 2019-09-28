@@ -10,6 +10,7 @@
         <!-- Input -->
         <InputForm />
         <Charts />
+        <Metadata />
       </v-row>
     </v-container>
   </v-app>
@@ -18,13 +19,16 @@
 <script>
 import InputForm from './components/InputForm'
 import Charts from './components/Charts'
+import Metadata from './components/Metadata'
 export default {
   name: 'App',
   components: {
     InputForm,
-    Charts
-  },
-  data: () => ({}),
-  methods: {}
+    Charts,
+    Metadata
+  }
 }
 </script>
+
+<style>
+</style>

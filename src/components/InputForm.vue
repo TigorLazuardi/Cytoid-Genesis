@@ -1,12 +1,13 @@
 <template>
   <v-col cols="12">
     <h3 class="headline">Input</h3>
+    <p class="caption font-italic">*Outlined inputs are mandatory to be filled.</p>
     <v-divider></v-divider>
     <v-container fluid>
       <v-row>
         <v-col lg="3" md="6" sm="12">
           <v-file-input
-            prepend-icon="mdi-music"
+            prepend-icon="mdi-file-music"
             hint="*Required. Only accept mp3"
             label="Music"
             persistent-hint
@@ -17,7 +18,7 @@
         </v-col>
         <v-col lg="3" md="6" sm="12">
           <v-file-input
-            prepend-icon="mdi-music"
+            prepend-icon="mdi-file-music"
             hint="*Required. Only accept mp3"
             label="Music Preview"
             persistent-hint
@@ -42,8 +43,7 @@
             prepend-icon="mdi-json"
             label="Storyboard (Global)"
             show-size
-            outlined
-            messages="Optional. This storyboard is used for all music difficulty.."
+            messages="Optional. This storyboard is used for all music difficulty."
           ></v-file-input>
         </v-col>
       </v-row>
@@ -60,9 +60,6 @@ export default {
       background: '',
       storyboard: ''
     }
-  },
-  watch: {
-    music: function () {}
   }
 }
 </script>
