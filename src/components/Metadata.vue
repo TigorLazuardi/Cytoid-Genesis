@@ -113,135 +113,135 @@
 </template>
 
 <script>
-import { mapState, mapMutations } from "vuex";
-const urlRegex = /^(ftp|https?):\/\/[^ "]+$/;
+import { mapState, mapMutations } from 'vuex'
+const urlRegex = /^(ftp|https?):\/\/[^ "]+$/
 export default {
-  name: "Metadata",
-  data() {
+  name: 'Metadata',
+  data () {
     return {
-      required: [v => !!v || "Please fill this field"],
+      required: [v => !!v || 'Please fill this field'],
       URLRule: [
-        v => !!v || "Please fill this field",
-        v => urlRegex.test(v) || "Wrong URL format"
+        v => !!v || 'Please fill this field',
+        v => urlRegex.test(v) || 'Wrong URL format'
       ]
-    };
+    }
   },
   computed: {
     ...mapState([
-      "chartVersion",
-      "chartAuthor",
-      "musicTitle",
-      "musicTitleLocalized",
-      "chartId",
-      "_chartId",
-      "musicArtist",
-      "musicArtistLocalized",
-      "musicSource",
-      "pictureAuthor",
-      "pictureSource"
+      'chartVersion',
+      'chartAuthor',
+      'musicTitle',
+      'musicTitleLocalized',
+      'chartId',
+      '_chartId',
+      'musicArtist',
+      'musicArtistLocalized',
+      'musicSource',
+      'pictureAuthor',
+      'pictureSource'
     ]),
 
     _chartVersion: {
-      get() {
-        return this.chartVersion;
+      get () {
+        return this.chartVersion
       },
-      set(val) {
-        this.setChartVersion(val);
+      set (val) {
+        this.setChartVersion(val)
       }
     },
 
     _chartAuthor: {
-      get() {
-        return this.chartAuthor;
+      get () {
+        return this.chartAuthor
       },
-      set(val) {
-        this.setChartAuthor(val);
+      set (val) {
+        this.setChartAuthor(val)
       }
     },
 
     _musicTitle: {
-      get() {
-        return this.musicTitle;
+      get () {
+        return this.musicTitle
       },
-      set(val) {
-        this.setMusicTitle(val);
+      set (val) {
+        this.setMusicTitle(val)
       }
     },
 
     _musicTitleLocalized: {
-      get() {
-        return this.musicTitleLocalized;
+      get () {
+        return this.musicTitleLocalized
       },
-      set(val) {
-        this.setMusicTitleLocalized(val);
+      set (val) {
+        this.setMusicTitleLocalized(val)
       }
     },
 
     _chartId: {
-      get() {
-        return this.chartId;
+      get () {
+        return this.chartId
       },
-      set(val) {
+      set (val) {
         let foo = val
           .trim()
-          .replace(/\s/g, "_")
-          .replace(/[^\dA-Za-z_\-\.]/g, "_")
-          .toLowerCase();
-        this.setChartId(foo);
+          .replace(/\s/g, '_')
+          .replace(/[^\dA-Za-z_\-\.]/g, '_')
+          .toLowerCase()
+        this.setChartId(foo)
       }
     },
 
     __chartId: {
-      get() {
+      get () {
         let author = this.chartAuthor
           .trim()
-          .replace(/\s/g, "_")
-          .replace(/[^\dA-Za-z_\-\.]/g, "_")
-          .toLowerCase();
+          .replace(/\s/g, '_')
+          .replace(/[^\dA-Za-z_\-\.]/g, '_')
+          .toLowerCase()
         let music = this.musicTitle
           .trim()
-          .replace(/\s/g, "_")
-          .replace(/[^\dA-Za-z_\-\.]/g, "_")
-          .toLowerCase();
-        return author + "." + music;
+          .replace(/\s/g, '_')
+          .replace(/[^\dA-Za-z_\-\.]/g, '_')
+          .toLowerCase()
+        return author + '.' + music
       },
-      set() {
-        return;
+      set () {
+
       }
     },
     _musicArtist: {
-      get() {
-        return this.musicArtist;
+      get () {
+        return this.musicArtist
       },
-      set(val) {
-        this.setMusicArtist(val);
+      set (val) {
+        this.setMusicArtist(val)
       }
     },
     _musicArtistLocalized: {
-      get() {
-        return this.musicArtistLocalized;
+      get () {
+        return this.musicArtistLocalized
       },
-      set(val) {
-        this.setMusicArtistLocalized(val);
+      set (val) {
+        this.setMusicArtistLocalized(val)
       }
     }
   },
   methods: {
     ...mapMutations([
-      "setChartVersion",
-      "setChartAuthor",
-      "setMusicTitle",
-      "setMusicTitleLocalized",
-      "setChartId",
-      "set_ChartId",
-      "setMusicArtist",
-      "setMusicArtistLocalized",
-      "setMusicSource",
-      "setPictureAuthor",
-      "setPictureSource"
+      'setChartVersion',
+      'setChartAuthor',
+      'setMusicTitle',
+      'setMusicTitleLocalized',
+      'setChartId',
+      'set_ChartId',
+      'setMusicArtist',
+      'setMusicArtistLocalized',
+      'setMusicSource',
+      'setPictureAuthor',
+      'setPictureSource'
     ])
   }
-};
+}
 </script>
 
 <style scoped>

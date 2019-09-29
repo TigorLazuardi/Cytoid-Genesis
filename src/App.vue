@@ -1,3 +1,4 @@
+
 <template>
   <v-app>
     <v-form ref="form">
@@ -30,31 +31,31 @@
 </template>
 
 <script>
-import InputForm from "./components/InputForm";
-import Charts from "./components/Charts";
-import Metadata from "./components/Metadata";
-import { mapState } from "vuex";
+import InputForm from './components/InputForm'
+import Charts from './components/Charts'
+import Metadata from './components/Metadata'
+// import { mapState } from 'vuex'
 export default {
-  name: "App",
+  name: 'App',
   components: {
     InputForm,
     Charts,
     Metadata
   },
   methods: {
-    submit() {
-      this.$store.commit("clearError");
+    submit () {
+      this.$store.commit('clearError')
 
-      if (this.$refs.form.validate()) console.log("Validate Runs Well");
-      else this.$store.commit("insertError", "Validations Failed");
+      if (this.$refs.form.validate()) console.log('Validate Runs Well')
+      else this.$store.commit('insertError', 'Validations Failed')
     }
   },
   computed: {
-    errors() {
-      return this.$store.state.errors;
+    errors () {
+      return this.$store.state.errors
     }
   }
-};
+}
 </script>
 
 <style>

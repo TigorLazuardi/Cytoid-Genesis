@@ -58,40 +58,40 @@
 </template>
 
 <script>
-import { mapState, mapMutations } from "vuex";
+import { mapState, mapMutations } from 'vuex'
 export default {
-  name: "Input-Form",
-  data: function() {
+  name: 'Input-Form',
+  data: function () {
     return {
-      rule: [v => (v != "" && v != null) || "Please fill out this field"]
-    };
+      rule: [v => (v != '' && v != null) || 'Please fill out this field']
+    }
   },
   methods: {
     ...mapMutations([
-      "setMusic",
-      "setPreview",
-      "setBackground",
-      "setStoryboard"
+      'setMusic',
+      'setPreview',
+      'setBackground',
+      'setStoryboard'
     ]),
-    _setMusic(val) {
-      if (val) this.setMusic(val.path);
-      else this.setMusic(null);
+    _setMusic (val) {
+      if (val) this.setMusic(val.path)
+      else this.setMusic(null)
     },
-    _setPreview(val) {
-      if (val) this.setPreview(val.path);
-      else this.setPreview(null);
+    _setPreview (val) {
+      if (val) this.setPreview(val.path)
+      else this.setPreview(null)
     },
-    _setBackground(val) {
-      if (val) this.setBackground(val.path);
-      else this.setBackground(null);
+    _setBackground (val) {
+      if (val) this.setBackground(val.path)
+      else this.setBackground(null)
     },
-    _setStoryboard(val) {
-      if (val) this.setStoryboard(val.path);
-      else this.setStoryboard(null);
+    _setStoryboard (val) {
+      if (val) this.setStoryboard(val.path)
+      else this.setStoryboard(null)
     }
   },
   computed: {}
-};
+}
 </script>
 
 <style>

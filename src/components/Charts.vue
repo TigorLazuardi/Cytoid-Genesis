@@ -1,3 +1,4 @@
+/* eslint eqeqeq: "off", curly: "error" */
 <template>
   <v-col cols="12" class="d-flex flex-column">
     <h3 class="headline">Charts</h3>
@@ -117,66 +118,66 @@
 </template>
 
 <script>
-import { mapState, mapMutations } from "vuex";
+import { mapState, mapMutations } from 'vuex'
 export default {
-  name: "Charts",
-  data() {
+  name: 'Charts',
+  data () {
     return {
-      required: [v => (v != "" && v != null) || "Please fill out this field"]
-    };
+      required: [v => (v != '' && v != null) || 'Please fill out this field']
+    }
   },
   methods: {
     ...mapMutations([
       // ! Easy
-      "toggleEasy",
-      "setDifficultyEasy",
-      "setCustomNameEasy",
-      "setChartEasy",
-      "setMusicEasy",
-      "setCustomStoryboardEasy",
+      'toggleEasy',
+      'setDifficultyEasy',
+      'setCustomNameEasy',
+      'setChartEasy',
+      'setMusicEasy',
+      'setCustomStoryboardEasy',
 
       // ! Hard
-      "toggleHard",
-      "setDifficultyHard",
-      "setCustomNameHard",
-      "setChartHard",
-      "setMusicHard",
-      "setCustomStoryboardHard",
+      'toggleHard',
+      'setDifficultyHard',
+      'setCustomNameHard',
+      'setChartHard',
+      'setMusicHard',
+      'setCustomStoryboardHard',
 
       // ! EX
-      "toggleEX",
-      "setDifficultyEX",
-      "setChartEasy",
-      "setMusicEX",
-      "setCustomStoryboardEX",
-      "setCustomNameEX"
+      'toggleEX',
+      'setDifficultyEX',
+      'setChartEasy',
+      'setMusicEX',
+      'setCustomStoryboardEX',
+      'setCustomNameEX'
     ])
   },
   computed: {
-    ...mapState(["charts"]),
-    _EasyState() {
-      return this.charts.easy.use;
+    ...mapState(['charts']),
+    _EasyState () {
+      return this.charts.easy.use
     },
 
     // * Easy
     _easyDifficulty: {
-      get() {
-        return this.charts.easy.diffulty;
+      get () {
+        return this.charts.easy.diffulty
       },
-      set(val) {
-        this.setDifficultyEasy(val);
+      set (val) {
+        this.setDifficultyEasy(val)
       }
     },
     _easyMusic: {
-      get() {
-        return this.charts.easy.music;
+      get () {
+        return this.charts.easy.music
       },
-      set(val) {
-        this.setMusicEasy(val);
+      set (val) {
+        this.setMusicEasy(val)
       }
     }
   }
-};
+}
 </script>
 
 <style>

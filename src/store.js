@@ -22,7 +22,7 @@ export default new Vuex.Store({
         customName: null,
         file: null,
         musicOverride: null,
-        customStoryboard: null,
+        customStoryboard: null
       },
       hard: {
         use: false,
@@ -30,7 +30,7 @@ export default new Vuex.Store({
         customName: null,
         file: null,
         musicOverride: null,
-        customStoryboard: null,
+        customStoryboard: null
       },
       EX: {
         use: false,
@@ -38,7 +38,7 @@ export default new Vuex.Store({
         customName: null,
         file: null,
         musicOverride: null,
-        customStoryboard: null,
+        customStoryboard: null
       }
     },
 
@@ -63,19 +63,19 @@ export default new Vuex.Store({
   mutations: {
     // ! Input Forms
 
-    setMusic(state, payload) {
+    setMusic (state, payload) {
       state.music = payload
     },
 
-    setPreview(state, payload) {
+    setPreview (state, payload) {
       state.music = payload
     },
 
-    setBackground(state, payload) {
+    setBackground (state, payload) {
       state.background = payload
     },
 
-    setStoryboard(state, payload) {
+    setStoryboard (state, payload) {
       state.background = payload
     },
 
@@ -83,120 +83,120 @@ export default new Vuex.Store({
 
     // * Easy
 
-    toggleEasy(state) {
+    toggleEasy (state) {
       state.charts.easy.use = !state.charts.easy.use
     },
-    setDifficultyEasy(state, payload) {
+    setDifficultyEasy (state, payload) {
       state.charts.easy.difficulty = payload
     },
-    setChartEasy(state, payload) {
+    setChartEasy (state, payload) {
       state.charts.easy.file = payload
     },
-    setMusicEasy(state, payload) {
+    setMusicEasy (state, payload) {
       state.charts.easy.musicOverride = payload
     },
-    setCustomStoryboardEasy(state, payload) {
+    setCustomStoryboardEasy (state, payload) {
       state.charts.easy.customStoryboard = payload
     },
-    setCustomNameEasy(state, payload) {
+    setCustomNameEasy (state, payload) {
       state.charts.easy.customName = payload
     },
 
     // * Hard
 
-    toggleHard(state) {
+    toggleHard (state) {
       state.charts.hard.use = !state.charts.hard.use
     },
-    setDifficultyHard(state, payload) {
+    setDifficultyHard (state, payload) {
       state.charts.hard.difficulty = payload
     },
-    setChartHard(state, payload) {
+    setChartHard (state, payload) {
       state.charts.hard.file = payload
     },
-    setMusicHard(state, payload) {
+    setMusicHard (state, payload) {
       state.charts.hard.musicOverride = payload
     },
-    setCustomStoryboardHard(state, payload) {
+    setCustomStoryboardHard (state, payload) {
       state.charts.hard.customStoryboard = payload
     },
-    setCustomNameHard(state, payload) {
+    setCustomNameHard (state, payload) {
       state.charts.hard.customName = payload
     },
 
     // * EX
 
-    toggleEX(state) {
+    toggleEX (state) {
       state.charts.EX.use = !state.charts.EX.use
     },
-    setDifficultyEX(state, payload) {
+    setDifficultyEX (state, payload) {
       state.charts.EX.difficulty = payload
     },
-    setChartEX(state, payload) {
+    setChartEX (state, payload) {
       state.charts.EX.file = payload
     },
-    setMusicEX(state, payload) {
+    setMusicEX (state, payload) {
       state.charts.EX.musicOverride = payload
     },
-    setCustomStoryboardEX(state, payload) {
+    setCustomStoryboardEX (state, payload) {
       state.charts.EX.customStoryboard = payload
     },
-    setCustomNameEX(state, payload) {
+    setCustomNameEX (state, payload) {
       state.charts.EX.customName = payload
     },
 
     // ! Metadata
 
-    setChartVersion(state, payload) {
+    setChartVersion (state, payload) {
       state.chartVersion = payload
     },
 
-    setChartAuthor(state, payload) {
+    setChartAuthor (state, payload) {
       state.chartAuthor = payload
     },
 
-    setMusicTitle(state, payload) {
+    setMusicTitle (state, payload) {
       state.musicTitle = payload
     },
 
-    setMusicTitleLocalized(state, payload) {
+    setMusicTitleLocalized (state, payload) {
       state.musicTitleLocalized = payload
     },
 
-    setChartId(state, payload) {
+    setChartId (state, payload) {
       state.chartId = payload
     },
 
-    set_ChartId(state, payload) {
+    set_ChartId (state, payload) {
       state._chartId = payload
     },
 
-    setMusicArtist(state, payload) {
+    setMusicArtist (state, payload) {
       state.musicArtist = payload
     },
 
-    setMusicArtistLocalized(state, payload) {
+    setMusicArtistLocalized (state, payload) {
       state.musicArtistLocalized = payload
     },
 
-    setMusicSource(state, payload) {
+    setMusicSource (state, payload) {
       state.musicSource = payload
     },
 
-    setPictureAuthor(state, payload) {
+    setPictureAuthor (state, payload) {
       state.pictureAuthor = payload
     },
 
-    setPictureSource(state, payload) {
+    setPictureSource (state, payload) {
       state.pictureAuthor = payload
     },
 
     // ! Errors
 
-    insertError(state, payload) {
+    insertError (state, payload) {
       state.errors.push(payload)
     },
-    clearError(state) {
+    clearError (state) {
       state.errors = []
     }
-  },
+  }
 })
