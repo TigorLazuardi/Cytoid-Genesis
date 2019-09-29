@@ -115,87 +115,86 @@
 </template>
 
 <script>
-import { mapState, mapMutations } from "vuex";
+import { mapState, mapMutations } from 'vuex'
 export default {
-  name: "Charts",
-  data() {
+  name: 'Charts',
+  data () {
     return {
       ruleEasy: [
         v => {
-          if (this.charts.easy.use === true) {
-            return (v !== "" && v !== null) || "Please fill out this field";
-          } else return true;
+          if (this.charts.easy.use) {
+            return (v !== '' && v !== null) || 'Please fill out this field'
+          } else return true
         }
       ],
       ruleHard: [
         v => {
           if (this.charts.hard.use) {
-            return (v !== "" && v !== null) || "Please fill out this field";
-          } else return true;
+            return (v !== '' && v !== null) || 'Please fill out this field'
+          } else return true
         }
       ],
       ruleEX: [
         v => {
           if (this.charts.EX.use) {
-            return (v !== "" && v !== null) || "Please fill out this field";
-          } else return true;
+            return (v !== '' && v !== null) || 'Please fill out this field'
+          } else return true
         }
       ]
-    };
+    }
   },
   methods: {
     ...mapMutations([
       // ! Easy
-      "toggleEasy",
-      "setDifficultyEasy",
-      "setCustomNameEasy",
-      "setChartEasy",
-      "setMusicEasy",
-      "setCustomStoryboardEasy",
+      'toggleEasy',
+      'setDifficultyEasy',
+      'setCustomNameEasy',
+      'setChartEasy',
+      'setMusicEasy',
+      'setCustomStoryboardEasy',
 
       // ! Hard
-      "toggleHard",
-      "setDifficultyHard",
-      "setCustomNameHard",
-      "setChartHard",
-      "setMusicHard",
-      "setCustomStoryboardHard",
+      'toggleHard',
+      'setDifficultyHard',
+      'setCustomNameHard',
+      'setChartHard',
+      'setMusicHard',
+      'setCustomStoryboardHard',
 
       // ! EX
-      "toggleEX",
-      "setDifficultyEX",
-      "setChartEasy",
-      "setMusicEX",
-      "setCustomStoryboardEX",
-      "setCustomNameEX"
+      'toggleEX',
+      'setDifficultyEX',
+      'setChartEasy',
+      'setMusicEX',
+      'setCustomStoryboardEX',
+      'setCustomNameEX'
     ])
   },
   computed: {
-    ...mapState(["charts"]),
-    _EasyState() {
-      console.log(this.charts.easy.use);
-      return this.charts.easy.use;
+    ...mapState(['charts']),
+    _EasyState () {
+      return this.charts.easy.use
     },
 
     // * Easy
     _easyDifficulty: {
-      get() {
-        return this.charts.easy.diffulty;
+      get () {
+        return this.charts.easy.diffulty
       },
-      set(val) {
-        this.setDifficultyEasy(val);
+      set (val) {
+        this.setDifficultyEasy(val)
       }
     },
     _easyMusic: {
-      get() {
-        return this.charts.easy.music;
+      get () {
+        return this.charts.easy.music
       },
-      set(val) {
-        this.setMusicEasy(val);
+      set (val) {
+        this.setMusicEasy(val)
       }
     }
   }
-};
+}
 </script>
 
 <style>
