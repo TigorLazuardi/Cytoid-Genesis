@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import Charts from './modules/Charts'
-import InputForm from './modules/InputForm'
-import Metadata from './modules/Metadata'
+import charts from './modules/Charts'
+import inputForm from './modules/InputForm'
+import metadata from './modules/Metadata'
 
 Vue.use(Vuex)
 
@@ -10,5 +10,13 @@ export default new Vuex.Store({
   state: {
     errors: []
   },
-  modules: { Charts, InputForm, Metadata }
+  mutations: {
+    insertError(state, payload) {
+      state.errors.push(payload)
+    },
+    clearError(state) {
+      state.errors = []
+    }
+  },
+  modules: { charts, inputForm, metadata }
 })

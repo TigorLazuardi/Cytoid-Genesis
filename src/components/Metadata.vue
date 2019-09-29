@@ -82,7 +82,7 @@
           messages="*Required. URL link where the music can be found. Like Youtube link or Artist's page."
           prepend-inner-icon="mdi-link"
           outlined
-          :rules="required"
+          :rules="URLRule"
         ></v-text-field>
       </v-col>
       <v-col sm="12" md="6" lg="6">
@@ -96,11 +96,11 @@
       </v-col>
       <v-col sm="12" md="6" lg="6">
         <v-text-field
-          label="Picture Author"
+          label="Picture Source"
           messages="*Required. URL link where the picture can be found. Like pixiv."
           prepend-inner-icon="mdi-link"
           outlined
-          :rules="required"
+          :rules="URLRule"
         ></v-text-field>
       </v-col>
     </v-row>
@@ -108,36 +108,41 @@
 </template>
 
 <script>
+const urlRegex = /^(ftp|https?):\/\/[^ "]+$/;
 export default {
-  name: 'Metadata',
-  data () {
+  name: "Metadata",
+  data() {
     return {
-      chartAuthor: '',
-      musicTitle: '',
-      chartId: '',
-      musicTitleLocalized: '',
-      required: [v => v !== '' || 'Please fill the chart author']
-    }
+      chartAuthor: "",
+      musicTitle: "",
+      chartId: "",
+      musicTitleLocalized: "",
+      required: [v => v !== "" || "Please fill this field"],
+      URLRule: [
+        v => v !== "" || "Please fill this field",
+        v => urlRegex.test(v) || "Wrong URL format"
+      ]
+    };
   },
   computed: {
     _chartId: {
-      get () {
+      get() {
         let author = this.chartAuthor
-          .replace(/\s/g, '_')
-          .replace(/[^\dA-Za-z_\-\.]/g, '_')
-          .toLowerCase()
+          .replace(/\s/g, "_")
+          .replace(/[^\dA-Za-z_\-\.]/g, "_")
+          .toLowerCase();
         let music = this.musicTitle
-          .replace(/\s/g, '_')
-          .replace(/[^\dA-Za-z_\-\.]/g, '_')
-          .toLowerCase()
-        return author + '.' + music
+          .replace(/\s/g, "_")
+          .replace(/[^\dA-Za-z_\-\.]/g, "_")
+          .toLowerCase();
+        return author + "." + music;
       },
-      set () {
-        this.chartId = this._chartId
+      set(v) {
+        this.chartId = v;
       }
     }
   }
-}
+};
 </script>
 
 <style scoped>

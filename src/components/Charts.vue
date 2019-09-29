@@ -22,6 +22,7 @@
                 prepend-icon="mdi-counter"
                 outlined
                 v-model="easy.difficulty"
+                :rules="ruleEasy"
               ></v-text-field>
               <v-text-field
                 label="Custom Difficulty Name"
@@ -36,6 +37,7 @@
                 hint="*Required"
                 persistent-hint
                 prepend-icon="mdi-text"
+                :rules="ruleEasy"
               ></v-file-input>
               <v-file-input label="Custom Music" prepend-icon="mdi-file-music"></v-file-input>
               <v-file-input label="Custom Storyboard" prepend-icon="mdi-json"></v-file-input>
@@ -53,6 +55,7 @@
                 hint="*Required. Value below 1 will show '?' while above 15 as '15+'"
                 persistent-hint
                 outlined
+                :rules="ruleHard"
                 prepend-icon="mdi-counter"
               ></v-text-field>
               <v-text-field
@@ -66,6 +69,7 @@
                 outlined
                 hint="*Required"
                 persistent-hint
+                :rules="ruleHard"
                 prepend-icon="mdi-text"
               ></v-file-input>
               <v-file-input label="Custom Music" prepend-icon="mdi-file-music"></v-file-input>
@@ -84,6 +88,7 @@
                 hint="*Required. Value below 1 will show '?' while above 15 as '15+'"
                 persistent-hint
                 outlined
+                :rules="ruleEX"
                 prepend-icon="mdi-counter"
               ></v-text-field>
               <v-text-field
@@ -97,6 +102,7 @@
                 outlined
                 hint="*Required"
                 persistent-hint
+                :rules="ruleEX"
                 prepend-icon="mdi-text"
               ></v-file-input>
               <v-file-input label="Custom Music" prepend-icon="mdi-file-music"></v-file-input>
@@ -110,39 +116,64 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 export default {
-  name: 'Charts',
-  data () {
+  name: "Charts",
+  data() {
     return {
-      easy: {
+      /* easy: {
         use: false,
-        name: '',
+        name: "",
         difficulty: null,
-        path: '',
-        storyboard: '',
-        musicOverride: ''
+        path: "",
+        storyboard: "",
+        musicOverride: ""
       },
       hard: {
         use: false,
-        name: '',
+        name: "",
         difficulty: 1,
-        path: '',
-        storyboard: '',
-        musicOverride: ''
+        path: "",
+        storyboard: "",
+        musicOverride: ""
       },
       EX: {
         use: false,
-        name: '',
+        name: "",
         difficulty: 1,
-        path: '',
-        storyboard: '',
-        musicOverride: ''
-      }
-    }
+        path: "",
+        storyboard: "",
+        musicOverride: ""
+      }, */
+      ruleEasy: [
+        v => {
+          if (this.easy.use) {
+            return (v !== "" && v !== null) || "Please fill out this field";
+          } else return false;
+        }
+      ],
+      ruleHard: [
+        v => {
+          if (this.hard.use) {
+            return (v !== "" && v !== null) || "Please fill out this field";
+          } else return false;
+        }
+      ],
+      ruleEX: [
+        v => {
+          if (this.EX.use) {
+            return (v !== "" && v !== null) || "Please fill out this field";
+          } else return false;
+        }
+      ]
+    };
   },
   methods: {},
-  computed: {}
-}
+  computed: {
+    ...mapState("charts", ["easy", "hard", "EX"])
+  },
+  created() {}
+};
 </script>
 
 <style>

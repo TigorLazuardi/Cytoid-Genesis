@@ -15,6 +15,7 @@
             outlined
             accept="audio/mpeg"
             @change="previewFiles"
+            :rules="rule"
           ></v-file-input>
         </v-col>
         <v-col lg="3" md="6" sm="12">
@@ -26,6 +27,7 @@
             show-size
             outlined
             accept="audio/mpeg"
+            :rules="rule"
           ></v-file-input>
         </v-col>
         <v-col lg="3" md="6" sm="12">
@@ -37,6 +39,7 @@
             show-size
             outlined
             accept="image/png, image/jpeg"
+            :rules="rule"
           ></v-file-input>
         </v-col>
         <v-col lg="3" md="6" sm="12">
@@ -54,22 +57,23 @@
 
 <script>
 export default {
-  name: 'Input-Form',
-  data: function () {
+  name: "Input-Form",
+  data: function() {
     return {
-      music: '',
-      musicPreview: '',
-      background: '',
-      storyboard: ''
-    }
+      music: "",
+      musicPreview: "",
+      background: "",
+      storyboard: "",
+      rule: [v => (v != "" && v != null) || "Please fill out this field"]
+    };
   },
   methods: {
-    previewFiles (e) {
-      this.music = e.path
-      console.log(this.music)
+    previewFiles(e) {
+      if (e) this.music = e.path;
+      else this.music = null;
     }
   }
-}
+};
 </script>
 
 <style>
