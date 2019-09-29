@@ -14,7 +14,7 @@
           <Metadata />
           <v-col v-if="errors.length > 0" cols="12">
             <v-card min-height="300px">
-              <h3>Error Found</h3>
+              <h3 class="mb-3">Error(s) Found</h3>
               <ol>
                 <li v-for="(error, i) in errors" :key="i">{{error}}</li>
               </ol>

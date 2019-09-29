@@ -4,7 +4,7 @@
     <p class="caption font-italic">
       *Outlined inputs are mandatory.
       <br />**At least one difficulty must be used.
-      <br />***Expanding the panel means you declare you will use the difficulty. Close the panel if you don't use it or else validation will be fired on it and get errors.
+      <br />***Expanding the panel means you declare you will use the difficulty. Close the panel if you don't use it since validation will be fired on all open panels and may return error.
     </p>
     <v-divider class="mb-4"></v-divider>
     <v-expansion-panels multiple>
@@ -22,13 +22,7 @@
                 prepend-icon="mdi-counter"
                 outlined
                 v-model="_easyDifficulty"
-                :rules="ruleEasy"
-              ></v-text-field>
-              <v-text-field
-                label="Custom Difficulty Name"
-                hint="Optional"
-                class="my-4"
-                prepend-icon="mdi-tag-text-outline"
+                :rules="charts.easy.use ? required : true"
               ></v-text-field>
               <v-file-input
                 label="Chart File"
@@ -36,10 +30,16 @@
                 hint="*Required"
                 persistent-hint
                 prepend-icon="mdi-text"
-                :rules="ruleEasy"
+                :rules="charts.easy.use ? required : true"
               ></v-file-input>
-              <v-file-input label="Custom Music" prepend-icon="mdi-file-music"></v-file-input>
-              <v-file-input label="Custom Storyboard" prepend-icon="mdi-json"></v-file-input>
+              <v-text-field
+                label="Custom Difficulty Name"
+                hint="Optional"
+                class="my-4"
+                prepend-icon="mdi-tag-text-outline"
+              ></v-text-field>
+              <v-file-input label="Music Override" prepend-icon="mdi-file-music"></v-file-input>
+              <v-file-input label="Level Specific Storyboard" prepend-icon="mdi-json"></v-file-input>
             </v-expansion-panel-content>
           </v-expansion-panel>
         </v-col>
@@ -54,25 +54,26 @@
                 hint="*Required. Value below 1 will show '?' while above 15 as '15+'"
                 persistent-hint
                 outlined
-                :rules="ruleHard"
+                :rules="charts.hard.use ? required : true"
                 prepend-icon="mdi-counter"
-              ></v-text-field>
-              <v-text-field
-                label="Custom Difficulty Name"
-                hint="Optional"
-                class="my-4"
-                prepend-icon="mdi-tag-text-outline"
               ></v-text-field>
               <v-file-input
                 label="Chart File"
                 outlined
                 hint="*Required"
                 persistent-hint
-                :rules="ruleHard"
+                :rules="charts.hard.use ? required : true"
                 prepend-icon="mdi-text"
               ></v-file-input>
-              <v-file-input label="Custom Music" prepend-icon="mdi-file-music"></v-file-input>
-              <v-file-input label="Custom Storyboard" prepend-icon="mdi-json"></v-file-input>
+              <v-text-field
+                label="Custom Difficulty Name"
+                hint="Optional"
+                class="my-4"
+                prepend-icon="mdi-tag-text-outline"
+              ></v-text-field>
+
+              <v-file-input label="Music Override" prepend-icon="mdi-file-music"></v-file-input>
+              <v-file-input label="Level Specific Storyboard" prepend-icon="mdi-json"></v-file-input>
             </v-expansion-panel-content>
           </v-expansion-panel>
         </v-col>
@@ -87,25 +88,26 @@
                 hint="*Required. Value below 1 will show '?' while above 15 as '15+'"
                 persistent-hint
                 outlined
-                :rules="ruleEX"
+                :rules="charts.EX.use ? required : true"
                 prepend-icon="mdi-counter"
-              ></v-text-field>
-              <v-text-field
-                label="Custom Difficulty Name"
-                hint="Optional"
-                class="my-4"
-                prepend-icon="mdi-tag-text-outline"
               ></v-text-field>
               <v-file-input
                 label="Chart File"
                 outlined
                 hint="*Required"
                 persistent-hint
-                :rules="ruleEX"
+                :rules="charts.EX.use ? required : true"
                 prepend-icon="mdi-text"
               ></v-file-input>
-              <v-file-input label="Custom Music" prepend-icon="mdi-file-music"></v-file-input>
-              <v-file-input label="Custom Storyboard" prepend-icon="mdi-json"></v-file-input>
+              <v-text-field
+                label="Custom Difficulty Name"
+                hint="Optional"
+                class="my-4"
+                prepend-icon="mdi-tag-text-outline"
+              ></v-text-field>
+
+              <v-file-input label="Music Override" prepend-icon="mdi-file-music"></v-file-input>
+              <v-file-input label="Level Specific Storyboard" prepend-icon="mdi-json"></v-file-input>
             </v-expansion-panel-content>
           </v-expansion-panel>
         </v-col>
@@ -115,86 +117,66 @@
 </template>
 
 <script>
-import { mapState, mapMutations } from 'vuex'
+import { mapState, mapMutations } from "vuex";
 export default {
-  name: 'Charts',
-  data () {
+  name: "Charts",
+  data() {
     return {
-      ruleEasy: [
-        v => {
-          if (this.charts.easy.use) {
-            return (v !== '' && v !== null) || 'Please fill out this field'
-          } else return true
-        }
-      ],
-      ruleHard: [
-        v => {
-          if (this.charts.hard.use) {
-            return (v !== '' && v !== null) || 'Please fill out this field'
-          } else return true
-        }
-      ],
-      ruleEX: [
-        v => {
-          if (this.charts.EX.use) {
-            return (v !== '' && v !== null) || 'Please fill out this field'
-          } else return true
-        }
-      ]
-    }
+      required: [v => (v != "" && v != null) || "Please fill out this field"]
+    };
   },
   methods: {
     ...mapMutations([
       // ! Easy
-      'toggleEasy',
-      'setDifficultyEasy',
-      'setCustomNameEasy',
-      'setChartEasy',
-      'setMusicEasy',
-      'setCustomStoryboardEasy',
+      "toggleEasy",
+      "setDifficultyEasy",
+      "setCustomNameEasy",
+      "setChartEasy",
+      "setMusicEasy",
+      "setCustomStoryboardEasy",
 
       // ! Hard
-      'toggleHard',
-      'setDifficultyHard',
-      'setCustomNameHard',
-      'setChartHard',
-      'setMusicHard',
-      'setCustomStoryboardHard',
+      "toggleHard",
+      "setDifficultyHard",
+      "setCustomNameHard",
+      "setChartHard",
+      "setMusicHard",
+      "setCustomStoryboardHard",
 
       // ! EX
-      'toggleEX',
-      'setDifficultyEX',
-      'setChartEasy',
-      'setMusicEX',
-      'setCustomStoryboardEX',
-      'setCustomNameEX'
+      "toggleEX",
+      "setDifficultyEX",
+      "setChartEasy",
+      "setMusicEX",
+      "setCustomStoryboardEX",
+      "setCustomNameEX"
     ])
   },
   computed: {
-    ...mapState(['charts']),
-    _EasyState () {
-      return this.charts.easy.use
+    ...mapState(["charts"]),
+    _EasyState() {
+      return this.charts.easy.use;
     },
 
     // * Easy
     _easyDifficulty: {
-      get () {
-        return this.charts.easy.diffulty
+      get() {
+        return this.charts.easy.diffulty;
       },
-      set (val) {
-        this.setDifficultyEasy(val)
+      set(val) {
+        this.setDifficultyEasy(val);
       }
     },
     _easyMusic: {
-      get () {
-        return this.charts.easy.music
+      get() {
+        return this.charts.easy.music;
       },
-      set (val) {
-        this.setMusicEasy(val)
+      set(val) {
+        this.setMusicEasy(val);
       }
     }
   }
-}
+};
 </script>
 
 <style>

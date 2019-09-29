@@ -14,7 +14,7 @@
             show-size
             outlined
             accept="audio/mpeg"
-            @change="previewFiles"
+            @change="_setMusic"
             :rules="rule"
           ></v-file-input>
         </v-col>
@@ -27,6 +27,7 @@
             show-size
             outlined
             accept="audio/mpeg"
+            @change="_setPreview"
             :rules="rule"
           ></v-file-input>
         </v-col>
@@ -39,6 +40,7 @@
             show-size
             outlined
             accept="image/png, image/jpeg"
+            @change="_setBackground"
             :rules="rule"
           ></v-file-input>
         </v-col>
@@ -56,23 +58,39 @@
 </template>
 
 <script>
+import { mapState, mapMutations } from "vuex";
 export default {
   name: "Input-Form",
   data: function() {
     return {
-      music: "",
-      musicPreview: "",
-      background: "",
-      storyboard: "",
       rule: [v => (v != "" && v != null) || "Please fill out this field"]
     };
   },
   methods: {
-    previewFiles(e) {
-      if (e) this.music = e.path;
-      else this.music = null;
+    ...mapMutations([
+      "setMusic",
+      "setPreview",
+      "setBackground",
+      "setStoryboard"
+    ]),
+    _setMusic(val) {
+      if (val) this.setMusic(val.path);
+      else this.setMusic(null);
+    },
+    _setPreview(val) {
+      if (val) this.setPreview(val.path);
+      else this.setPreview(null);
+    },
+    _setBackground(val) {
+      if (val) this.setBackground(val.path);
+      else this.setBackground(null);
+    },
+    _setStoryboard(val) {
+      if (val) this.setStoryboard(val.path);
+      else this.setStoryboard(null);
     }
-  }
+  },
+  computed: {}
 };
 </script>
 

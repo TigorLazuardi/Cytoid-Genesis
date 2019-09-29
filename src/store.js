@@ -5,6 +5,16 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+
+    // * Input
+
+    music: null,
+    musicPreview: null,
+    background: null,
+    storyboard: null,
+
+    // * Charts
+
     charts: {
       easy: {
         use: false,
@@ -31,9 +41,44 @@ export default new Vuex.Store({
         customStoryboard: null,
       }
     },
+
+    // * Metadata
+
+    chartVersion: null,
+    chartAuthor: null,
+    musicTitle: null,
+    musicTitleLocalized: null,
+    chartId: null,
+    _chartId: null,
+    musicArtist: null,
+    musicArtistLocalized: null,
+    musicSource: null,
+    pictureAuthor: null,
+    pictureSource: null,
+
+    // * Errors
+
     errors: []
   },
   mutations: {
+    // ! Input Forms
+
+    setMusic(state, payload) {
+      state.music = payload
+    },
+
+    setPreview(state, payload) {
+      state.music = payload
+    },
+
+    setBackground(state, payload) {
+      state.background = payload
+    },
+
+    setStoryboard(state, payload) {
+      state.background = payload
+    },
+
     // ! Charts
 
     // * Easy
@@ -97,6 +142,52 @@ export default new Vuex.Store({
     },
     setCustomNameEX(state, payload) {
       state.charts.EX.customName = payload
+    },
+
+    // ! Metadata
+
+    setChartVersion(state, payload) {
+      state.chartVersion = payload
+    },
+
+    setChartAuthor(state, payload) {
+      state.chartAuthor = payload
+    },
+
+    setMusicTitle(state, payload) {
+      state.musicTitle = payload
+    },
+
+    setMusicTitleLocalized(state, payload) {
+      state.musicTitleLocalized = payload
+    },
+
+    setChartId(state, payload) {
+      state.chartId = payload
+    },
+
+    set_ChartId(state, payload) {
+      state._chartId = payload
+    },
+
+    setMusicArtist(state, payload) {
+      state.musicArtist = payload
+    },
+
+    setMusicArtistLocalized(state, payload) {
+      state.musicArtistLocalized = payload
+    },
+
+    setMusicSource(state, payload) {
+      state.musicSource = payload
+    },
+
+    setPictureAuthor(state, payload) {
+      state.pictureAuthor = payload
+    },
+
+    setPictureSource(state, payload) {
+      state.pictureAuthor = payload
     },
 
     // ! Errors
