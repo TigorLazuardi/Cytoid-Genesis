@@ -11,7 +11,7 @@
       <v-row>
         <v-col lg="4" md="4" sm="12">
           <v-expansion-panel>
-            <v-expansion-panel-header class="cyan darken-2" @click="easy.use = !easy.use;">Easy</v-expansion-panel-header>
+            <v-expansion-panel-header class="cyan darken-2" @click="toggleEasy()">Easy</v-expansion-panel-header>
             <v-expansion-panel-content class="cyan darken-4">
               <v-text-field
                 class="mt-4"
@@ -21,7 +21,7 @@
                 persistent-hint
                 prepend-icon="mdi-counter"
                 outlined
-                v-model="easy.difficulty"
+                v-model="_easyDifficulty"
                 :rules="ruleEasy"
               ></v-text-field>
               <v-text-field
@@ -29,7 +29,6 @@
                 hint="Optional"
                 class="my-4"
                 prepend-icon="mdi-tag-text-outline"
-                v-model="easy.name"
               ></v-text-field>
               <v-file-input
                 label="Chart File"
@@ -46,7 +45,7 @@
         </v-col>
         <v-col lg="4" md="4" sm="12">
           <v-expansion-panel>
-            <v-expansion-panel-header class="purple darken-2" @click="hard.use = !hard.use;">Hard</v-expansion-panel-header>
+            <v-expansion-panel-header class="purple darken-2" @click="toggleHard()">Hard</v-expansion-panel-header>
             <v-expansion-panel-content class="purple darken-4">
               <v-text-field
                 class="mt-4"
@@ -79,7 +78,7 @@
         </v-col>
         <v-col lg="4" md="4" sm="12">
           <v-expansion-panel>
-            <v-expansion-panel-header class="red darken-2" @click="EX.use = !EX.use;">EX</v-expansion-panel-header>
+            <v-expansion-panel-header class="red darken-2" @click="toggleEX()">EX</v-expansion-panel-header>
             <v-expansion-panel-content class="red darken-4">
               <v-text-field
                 class="mt-4"
@@ -116,63 +115,86 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState, mapMutations } from "vuex";
 export default {
   name: "Charts",
   data() {
     return {
-      /* easy: {
-        use: false,
-        name: "",
-        difficulty: null,
-        path: "",
-        storyboard: "",
-        musicOverride: ""
-      },
-      hard: {
-        use: false,
-        name: "",
-        difficulty: 1,
-        path: "",
-        storyboard: "",
-        musicOverride: ""
-      },
-      EX: {
-        use: false,
-        name: "",
-        difficulty: 1,
-        path: "",
-        storyboard: "",
-        musicOverride: ""
-      }, */
       ruleEasy: [
         v => {
-          if (this.easy.use) {
+          if (this.charts.easy.use === true) {
             return (v !== "" && v !== null) || "Please fill out this field";
-          } else return false;
+          } else return true;
         }
       ],
       ruleHard: [
         v => {
-          if (this.hard.use) {
+          if (this.charts.hard.use) {
             return (v !== "" && v !== null) || "Please fill out this field";
-          } else return false;
+          } else return true;
         }
       ],
       ruleEX: [
         v => {
-          if (this.EX.use) {
+          if (this.charts.EX.use) {
             return (v !== "" && v !== null) || "Please fill out this field";
-          } else return false;
+          } else return true;
         }
       ]
     };
   },
-  methods: {},
-  computed: {
-    ...mapState("charts", ["easy", "hard", "EX"])
+  methods: {
+    ...mapMutations([
+      // ! Easy
+      "toggleEasy",
+      "setDifficultyEasy",
+      "setCustomNameEasy",
+      "setChartEasy",
+      "setMusicEasy",
+      "setCustomStoryboardEasy",
+
+      // ! Hard
+      "toggleHard",
+      "setDifficultyHard",
+      "setCustomNameHard",
+      "setChartHard",
+      "setMusicHard",
+      "setCustomStoryboardHard",
+
+      // ! EX
+      "toggleEX",
+      "setDifficultyEX",
+      "setChartEasy",
+      "setMusicEX",
+      "setCustomStoryboardEX",
+      "setCustomNameEX"
+    ])
   },
-  created() {}
+  computed: {
+    ...mapState(["charts"]),
+    _EasyState() {
+      console.log(this.charts.easy.use);
+      return this.charts.easy.use;
+    },
+
+    // * Easy
+    _easyDifficulty: {
+      get() {
+        return this.charts.easy.diffulty;
+      },
+      set(val) {
+        this.setDifficultyEasy(val);
+      }
+    },
+    _easyMusic: {
+      get() {
+        return this.charts.easy.music;
+      },
+      set(val) {
+        this.setMusicEasy(val);
+      }
+    }
+  }
 };
 </script>
 

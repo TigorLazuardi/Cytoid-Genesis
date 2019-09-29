@@ -60,21 +60,21 @@ export default {
       state.hard.customName = payload
     },
 
-    // ! Extreme
+    // ! EX
 
-    toggleExtreme(state) {
+    toggleEX(state) {
       state.EX.use = !state.EX.use
     },
-    setDifficultyExtreme(state, payload) {
+    setDifficultyEX(state, payload) {
       state.EX.difficulty = payload
     },
-    setMusicExtreme(state, payload) {
+    setMusicEX(state, payload) {
       state.EX.music = payload
     },
-    setCustomStoryboardExtreme(state, payload) {
+    setCustomStoryboardEX(state, payload) {
       state.EX.customStoryboard = payload
     },
-    setCustomNameExtreme(state, payload) {
+    setCustomNameEX(state, payload) {
       state.EX.customName = payload
     }
   },

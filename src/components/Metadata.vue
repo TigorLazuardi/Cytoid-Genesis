@@ -15,6 +15,7 @@
       <v-col sm="12" md="6" lg="6">
         <v-text-field
           label="Chart Version"
+          prepend-inner-icon="mdi-numeric"
           placeholder="1"
           type="number"
           outlined
@@ -65,8 +66,8 @@
           label="Music Artist"
           prepend-inner-icon="mdi-artist"
           messages="*Required."
-          outlined
           :rules="required"
+          outlined
         ></v-text-field>
       </v-col>
       <v-col sm="12" md="6" lg="4">
@@ -117,7 +118,11 @@ export default {
       musicTitle: "",
       chartId: "",
       musicTitleLocalized: "",
-      required: [v => v !== "" || "Please fill this field"],
+      required: [
+        v =>
+          (v !== "" && v !== null && v !== undefined) ||
+          "Please fill this field"
+      ],
       URLRule: [
         v => v !== "" || "Please fill this field",
         v => urlRegex.test(v) || "Wrong URL format"
